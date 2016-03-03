@@ -31,3 +31,4 @@ group :development, :test do
 end
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'devise'
