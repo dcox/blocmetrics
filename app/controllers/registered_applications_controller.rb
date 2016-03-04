@@ -1,7 +1,7 @@
 class RegisteredApplicationsController < ApplicationController
 
   def index
-    @registered_applications = RegisteredApplication.all
+    @registered_applications = current_user.registered_applications
   end
 
   def new
@@ -12,6 +12,7 @@ class RegisteredApplicationsController < ApplicationController
     @registered_application = RegisteredApplication.new
     @registered_application.name = params[:registered_application][:name]
     @registered_application.url = params[:registered_application][:url]
+    @registered_application.user = current_user
 
     if @registered_application.save
       redirect_to registered_applications_path
@@ -21,7 +22,7 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def destroy
-    @registered_application = RegisteredApplication.find(params[:id])
+    @registered_application = current_user.registered_applications.find(params[:id])
     @registered_application.destroy!
     redirect_to registered_applications_path
   end
