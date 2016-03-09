@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :registered_applications, only: [:index, :new, :create, :destroy]
+  resources :events
 
 end
