@@ -1,23 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# Users
+User.create!(email: "dcox@zendesk.com", password: "hello there", password_confirmation: "hello there", confirmed_at: Time.now)
 
-# Generate Registered Applications
 5.times do 
-   RegisteredApplication.create!(name: "MyCoolApp", url: "http://mycoolapp.com")
+   User.create!(email: Faker::Internet.email, password: Faker::Internet::password(8))
+end
+users = User.count
+
+# Registered Applications
+20.times do 
+   RegisteredApplication.create!(name: Faker::Internet.domain_name, user_id: User.all.sample.id, url: Faker::Internet.url)
 end
 registered_applications = RegisteredApplication.count
 
+# Events
+event_names = ["Click Link", "Submit Form"]
 50.times do 
-  Event.create!(name: "MySweetEvent", registered_application: RegisteredApplication.all.sample)
+  Event.create!(name: event_names.sample, registered_application: RegisteredApplication.all.sample)
 end
 
 events = Event.count
 
+puts "#{users} Users created"
 puts "#{registered_applications} Registered #{"Application".pluralize(registered_applications)} created"
 puts "#{events} Registered #{"Event".pluralize(events)} created"
-
