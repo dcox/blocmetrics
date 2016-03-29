@@ -2,5 +2,5 @@
 
 <% @registered_applications.each do |registered_application| %>
   <h2><%= link_to registered_application.name, registered_application.url %></h2>
-  <h4><%= link_to "Delete", registered_application_path(registered_application.id), :method => :delete %></h4>
+  <h4><%= link_to "Show", registered_application_path(registered_application.id) %> | <%= link_to "Delete", registered_application_path(registered_application.id), :method => :delete %></h4>
 <% end %>

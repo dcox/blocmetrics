@@ -1,0 +1,9 @@
+<h2>Registered application details for</h2>
+<h1><%= link_to @registered_application.name, @registered_application.url %></h1>
+
+<h2>Events</h2>
+<ul>
+  <% @events.each do |event_name, event_data| %>
+    <li><%= event_name %>: <%= event_data.size %></li>
+  <% end %>
+</ul>
