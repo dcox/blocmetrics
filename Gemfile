@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -32,4 +32,6 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
-
+gem 'chartkick'
+gem 'groupdate'
+gem 'pg'
