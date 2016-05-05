@@ -1,7 +1,10 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
 <h2>Registered application details for</h2>
 <h1><%= link_to @registered_application.name, @registered_application.url %></h1>
 
 <h2>Events</h2>
+<%= pie_chart @registered_application.events.group(:name).count %>
+<%= line_chart @registered_application.events.group_by_day(:created_at).count %>
 <ul>
   <% @events.each do |event_name, event_data| %>
     <li><%= event_name %>: <%= event_data.size %></li>
